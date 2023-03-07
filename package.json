@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "build": "npx tsc",
-    "start": "node -r module-alias/register ./dist --env=production",
+    "start": "node ./dist/api/index.js",
     "dev": "nodemon"
   },
   "nodemonConfig": {
