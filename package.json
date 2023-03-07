@@ -2,7 +2,7 @@
   "name": "den-server",
   "version": "0.0.0",
   "scripts": {
-    "build": "npx ts-node build.ts",
+    "build": "npx tsc",
     "start": "node -r module-alias/register ./dist --env=production",
     "dev": "nodemon"
   },

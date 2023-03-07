@@ -1,13 +1,13 @@
-import { IS_DEV } from "@src/contants";
+import { IS_DEV } from "../contants";
 import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
 import logger from "./logger";
 import createResponse from "./response";
 
 const errorHandler: ErrorRequestHandler = (
   err: Error,
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ): void => {
   logger.err(err);
   res.status(500).send(
