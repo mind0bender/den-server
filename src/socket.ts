@@ -1,5 +1,6 @@
 import { Server as HTTPServer } from "http";
 import { Server, Socket } from "socket.io";
+import { CLIENT_URL } from "./contants";
 import logger from "./util/logger";
 
 const initializeSocket: (server: HTTPServer) => void = (
@@ -8,7 +9,7 @@ const initializeSocket: (server: HTTPServer) => void = (
   logger.info("Initializing Socket server");
   const io = new Server(server, {
     cors: {
-      origin: ["http://localhost:5173"],
+      origin: [CLIENT_URL],
     },
   });
 
