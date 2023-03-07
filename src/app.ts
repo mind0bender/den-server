@@ -2,8 +2,8 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import path from "path";
 import helmet from "helmet";
-import express, { Express, json } from "express";
-import { CLIENT_URL, IS_DEV } from "./contants";
+import express, { Express, json, Request, Response } from "express";
+import { CLIENT_URL, IS_DEV, PORT } from "./contants";
 import errorHandler from "./util/errorHandler";
 import cors from "cors";
 
@@ -20,10 +20,11 @@ app.use(
     origin: [CLIENT_URL],
   })
 );
+
 app.use(morgan(IS_DEV ? "dev" : "common"));
 
-app.get("/", (): void => {
-  throw new Error("LOL");
+app.get("/", (req: Request, res: Response): void => {
+  res.send({ msg: `server is running`, CLIENT_URL, PORT });
 });
 
 app.use(errorHandler);
