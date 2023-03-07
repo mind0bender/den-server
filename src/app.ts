@@ -6,6 +6,7 @@ import express, { Express, json, Request, Response } from "express";
 import { CLIENT_URL, IS_DEV, PORT } from "./contants";
 import errorHandler from "./util/errorHandler";
 import cors from "cors";
+import logger from "./util/logger";
 
 const app: Express = express();
 
@@ -22,6 +23,8 @@ app.use(
 );
 
 app.use(morgan(IS_DEV ? "dev" : "common"));
+
+logger.imp({ msg: `server is running`, CLIENT_URL, PORT });
 
 app.get("/", (req: Request, res: Response): void => {
   res.send({ msg: `server is running`, CLIENT_URL, PORT });
