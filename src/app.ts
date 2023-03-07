@@ -3,7 +3,7 @@ import morgan from "morgan";
 import path from "path";
 import helmet from "helmet";
 import express, { Express, json } from "express";
-import { IS_DEV } from "./contants";
+import { CLIENT_URL, IS_DEV } from "./contants";
 import errorHandler from "./util/errorHandler";
 import cors from "cors";
 
@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(json());
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: [CLIENT_URL],
   })
 );
 app.use(morgan(IS_DEV ? "dev" : "common"));
