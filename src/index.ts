@@ -10,7 +10,6 @@ config();
 const server: HTTPServer = createServer(app);
 initializeSocket(server);
 
-
 if (require.main === module) {
   // Start the server only if this file is being run directly
   server.listen(PORT, (): void => {

@@ -2,22 +2,20 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "tsconfig.json",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "src/**/*.ts",
-      "use": "@vercel/node"
+      "src": "src/index.ts",
+      "use": "@vercel/node",
+      "config": {
+        "maxLambdaSize": "50mb",
+        "buildCommand": "yarn run build",
+        "outputDirectory": "dist",
+        "tsconfig": "tsconfig.json"
+      }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "./dist/index.js"
+      "dest": "/dist/index.js"
     }
   ]
 }
