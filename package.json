@@ -2,10 +2,16 @@
   "name": "den-server",
   "version": "0.0.0",
   "scripts": {
-    "build": "tsc",
+    "build": "rimraf dist && tsc",
+    "add-build": "git add dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts"
   },
+  "pre-commit": [
+    "build",
+    "add-build"
+  ],
   "nodemonConfig": {
     "watch": [
       "src"
@@ -59,6 +65,8 @@
     "fs-extra": "^11.1.0",
     "jasmine": "^4.5.0",
     "nodemon": "^2.0.21",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^4.4.0",
     "supertest": "^6.3.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2"
