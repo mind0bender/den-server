@@ -5,9 +5,7 @@
       "src": "src/index.ts",
       "use": "@vercel/node",
       "config": {
-        "maxLambdaSize": "50mb",
-        "buildCommand": "yarn run build",
-        "outputDirectory": "dist",
+        "buildCommand": "yarn build",
         "tsconfig": "tsconfig.json"
       }
     }
