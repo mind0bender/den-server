@@ -10,8 +10,12 @@ config();
 const server: HTTPServer = createServer(app);
 initializeSocket(server);
 
-server.listen(PORT, (): void => {
-  logger.info(`server running on port ${PORT}`);
-});
+
+if (require.main === module) {
+  // Start the server only if this file is being run directly
+  server.listen(PORT, (): void => {
+    logger.info(`server running on port ${PORT}`);
+  });
+}
 
 export default server;
